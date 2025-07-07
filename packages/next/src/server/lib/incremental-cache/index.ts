@@ -93,7 +93,8 @@ export class IncrementalCache implements IncrementalCacheType {
   readonly isOnDemandRevalidate?: boolean
 
   private static readonly debug: boolean =
-    !!process.env.NEXT_PRIVATE_DEBUG_CACHE
+    process.env.NEXT_PRIVATE_DEBUG_CACHE === 'true' || 
+    process.env.NEXT_PRIVATE_DEBUG_CACHE === '1'
   private readonly locks = new Map<string, Promise<void>>()
 
   /**
